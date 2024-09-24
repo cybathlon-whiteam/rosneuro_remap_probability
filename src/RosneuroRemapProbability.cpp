@@ -21,8 +21,8 @@ bool RemapProbability::configure(void) {
   nh_.param<double>("margin", treshold_, 0.5);
   this->convert_treshold_to_margins();
 
-  sub_neuro_output_ = nh_.subscribe("/smrbci/neuroprediction", 1, &RemapProbability::on_recived_neuro_output, this);
-  pub_neuro_output_ = nh_.advertise<rosneuro_msgs::NeuroOutput>("/smrbci/remap_neuroprediction", 1);
+  sub_neuro_output_ = nh_.subscribe("/smr/neuroprediction/raw", 1, &RemapProbability::on_recived_neuro_output, this);
+  pub_neuro_output_ = nh_.advertise<rosneuro_msgs::NeuroOutput>("/smr/neuroprediction/remap", 1);
 
   this->dyncfg_callback_ = boost::bind(&RemapProbability::on_request_reconfigure, this, _1, _2);
   this->dyncfg_server_.setCallback(this->dyncfg_callback_);

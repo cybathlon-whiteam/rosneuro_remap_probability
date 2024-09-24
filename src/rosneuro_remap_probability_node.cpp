@@ -3,7 +3,7 @@
 
 int main(int argc, char **argv) {
   // ros initialization
-  ros::init(argc, argv, "rosneuro_remap_probability");
+  ros::init(argc, argv, "rosneuro_remap_probability_node");
 
   rosneuro::RemapProbability remap_probability;
   if (!remap_probability.configure()) {
